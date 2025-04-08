@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Skincare Routine 🌸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Your Routine 🌿</h1>
+    <div id="routine"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const skinType = params.get('skinType');
+    const skinConcern = params.get('skinConcern');
+
+    const routineData = {
+      "Oily": {
+        morning: "Cleanse 🧼 → Tone 💧 → Lightweight moisturizer 💦 → SPF 🌞",
+        night: "Double cleanse 🧖‍♀️ → Exfoliate (2-3x/week) 🧽 → Hydrating serum 💧 → Oil-free night cream 🌙",
+        tips: ["✅ Use gel-based products", "✅ Stay hydrated", "✅ Use clay masks weekly", "🚫 Avoid over-washing", "🚫 Skip heavy creams", "🚫 No alcohol-based toners"]
+      },
+      "Dry": {
+        morning: "Hydrating cleanser 🧼 → Hydrating toner 💧 → Rich moisturizer 🧴 → SPF 🌞",
+        night: "Cream cleanser 🧖‍♀️ → Serum 💧 → Heavy moisturizer 💦 → Eye cream 👁️",
+        tips: ["✅ Use cream-based cleansers", "✅ Layer hydrating serums", "✅ Drink water", "🚫 Avoid hot water", "🚫 Skip alcohol toners", "🚫 No foam cleansers"]
+      },
+      "Combination": {
+        morning: "Gentle cleanser 🧼 → Balance toner 💧 → Gel moisturizer 🧴 → SPF 🌞",
+        night: "Cleanse 🧖‍♀️ → Targeted serum 💧 → Balancing night cream 🌙",
+        tips: ["✅ Use targeted treatments", "✅ Blot excess oil", "✅ Hydrate dry areas", "🚫 Avoid harsh scrubs", "🚫 Skip comedogenic products", "🚫 No over-layering"]
+      },
+      "Sensitive": {
+        morning: "Fragrance-free cleanser 🧼 → Gentle toner 💧 → Calming moisturizer 🧴 → SPF 🌞",
+        night: "Cleanse 🧖‍♀️ → Repair serum 💧 → Barrier cream 🌙",
+        tips: ["✅ Use hypoallergenic products", "✅ Patch test new items", "✅ Use soothing ingredients", "🚫 Avoid fragrance", "🚫 No harsh exfoliants", "🚫 Skip alcohol-based items"]
+      }
+    };
+
+    if (skinType && routineData[skinType]) {
+      const data = routineData[skinType];
+      document.getElementById('routine').innerHTML = `
+        <h2>${skinType} Skin Routine 💖</h2>
+        <p><strong>Morning Routine ☀️:</strong> ${data.morning}</p>
+        <p><strong>Night Routine 🌙:</strong> ${data.night}</p>
+        <h3>Tips ✨</h3>
+        <ul>
+          ${data.tips.map(tip => `<li>${tip}</li>`).join('')}
+        </ul>
+      `;
+    } else {
+      document.getElementById('routine').innerHTML = "<p>Oops! Please go back and select valid options. 💔</p>";
+    }
+  </script>
+</body>
+</html>

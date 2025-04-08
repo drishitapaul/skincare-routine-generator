@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skincare Routine Generator 💆‍♀️✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Skincare Routine Generator 💆‍♀️✨</h1>
+    <form id="routineForm">
+      <label for="skinType">Select your skin type 🧴:</label>
+      <select id="skinType" required>
+        <option value="">-- Choose Skin Type --</option>
+        <option value="Oily">Oily 🧴</option>
+        <option value="Dry">Dry 💧</option>
+        <option value="Combination">Combination 🌀</option>
+        <option value="Sensitive">Sensitive 🌸</option>
+      </select>
+
+      <label for="skinConcern">Select your skin concern 😣:</label>
+      <select id="skinConcern" required>
+        <option value="">-- Choose Skin Concern --</option>
+        <option value="Acne">Acne 😣</option>
+        <option value="Dullness">Dullness 😑</option>
+        <option value="Pigmentation">Pigmentation 🎨</option>
+        <option value="Aging">Aging ⏳</option>
+      </select>
+
+      <button type="submit">✨ Generate Routine ✨</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('routineForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const skinType = document.getElementById('skinType').value;
+      const skinConcern = document.getElementById('skinConcern').value;
+      window.location.href = `result.html?skinType=${encodeURIComponent(skinType)}&skinConcern=${encodeURIComponent(skinConcern)}`;
+    });
+  </script>
+</body>
+</html>
